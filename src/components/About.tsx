@@ -39,19 +39,17 @@ export default function About() {
 
   return (
     <section id="about" ref={ref} className="relative py-24 bg-white overflow-hidden">
-      {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px z-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px z-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-      <div className="absolute top-20 right-0 w-80 h-80 z-0 bg-blue-50/80 blur-3xl rounded-full opacity-70 pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-60 h-60 z-0 bg-cyan-50/80 blur-3xl rounded-full opacity-70 pointer-events-none" />
+      <div className="absolute top-20 right-0 w-80 h-80 z-0 bg-blue-50/80 rounded-full opacity-70 pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-60 h-60 z-0 bg-cyan-50/80 rounded-full opacity-70 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16 transform-gpu"
+          className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-xs font-semibold tracking-widest uppercase mb-4">
             Who We Are
@@ -67,14 +65,16 @@ export default function About() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-14 lg:items-start mb-16">
-          {/* Left — text */}
-          <div className="self-start mt-0 pt-0">
+        {/* items-start ensures both columns start at the highest point */}
+        <div className="grid lg:grid-cols-2 gap-14 items-start mb-16">
+          
+          {/* Left Column: Text (No margins, sitting naturally) */}
+          <div className="flex flex-col">
             <motion.p
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-slate-600 leading-relaxed mb-6 text-sm sm:text-base transform-gpu"
+              className="text-slate-600 leading-relaxed mb-6 text-sm sm:text-base m-0"
             >
               Perfect Innovative Computer Pvt. Ltd incorporates the latest microprocessor-based
               technology delivering the highest quality in design, performance and reliability. We
@@ -85,7 +85,7 @@ export default function About() {
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-slate-600 leading-relaxed mb-8 text-sm sm:text-base transform-gpu"
+              className="text-slate-600 leading-relaxed mb-8 text-sm sm:text-base"
             >
               As a standard re-seller for DELL, Cisco, IBM, Microsoft, Fortinet, Checkpoint,
               Sophos, Adobe, Red Hat, HPE, EPSON, CANON, LIPI and VMware, we are a leading force on
@@ -93,7 +93,6 @@ export default function About() {
               professionals committed to a benchmark of excellence.
             </motion.p>
 
-            {/* Strengths grid */}
             <div className="grid sm:grid-cols-2 gap-3">
               {strengths.map((s, i) => (
                 <motion.div
@@ -101,7 +100,7 @@ export default function About() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.1 * i + 0.3 }}
-                  className="flex items-start gap-2.5 transform-gpu"
+                  className="flex items-start gap-2.5"
                 >
                   <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-600 text-sm">{s}</span>
@@ -110,40 +109,37 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right — image collage + cards */}
-          <div className="self-start mt-0 pt-0">
-            {/* Image grid */}
+          {/* Right Column: Images (Adding lg:pt-2 to gently push the image down 8px to align with the text) */}
+          <div className="flex flex-col lg:pt-2">
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="grid grid-cols-2 gap-3 mb-5 transform-gpu"
+              className="grid grid-cols-2 gap-3 mb-5"
             >
-              {/* Large image */}
-              <div className="col-span-2 relative h-52 rounded-2xl overflow-hidden border border-slate-100 shadow-md">
+              <div className="col-span-2 relative h-52 rounded-2xl overflow-hidden border border-slate-100 shadow-md group">
                 <Image
                   src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
                   alt="PICL team at work"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-blue-600/90 text-white text-xs font-semibold">
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+                  <span className="px-4 py-1.5 rounded-full bg-blue-600/90 text-white text-xs font-semibold shadow-sm">
                     30+ Years of Excellence
                   </span>
                 </div>
               </div>
 
-              {/* Two smaller images */}
               {galleryImages.map((img, i) => (
                 <motion.div
                   key={img.alt}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                  className="relative h-36 rounded-xl overflow-hidden border border-slate-100 shadow-sm group transform-gpu"
+                  className="relative h-36 rounded-xl overflow-hidden border border-slate-100 shadow-sm group"
                 >
                   <Image
                     src={img.src}
@@ -153,14 +149,15 @@ export default function About() {
                     unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-2 left-3">
-                    <p className="text-white text-xs font-semibold">{img.label}</p>
+                  <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+                    <p className="px-3 py-1 rounded-full bg-slate-900/50 backdrop-blur-sm border border-white/10 text-white text-[10px] uppercase tracking-wider font-semibold">
+                      {img.label}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
 
-            {/* Highlight cards */}
             <div className="space-y-3">
               {highlights.map(({ icon: Icon, title, desc }, i) => (
                 <motion.div
@@ -169,7 +166,7 @@ export default function About() {
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.15 * i + 0.4 }}
                   whileHover={{ x: 6 }}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all duration-300 group transform-gpu"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all duration-300 group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-100">
                     <Icon className="w-4 h-4 text-white" />
@@ -182,12 +179,11 @@ export default function About() {
               ))}
             </div>
 
-            {/* Office info card */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.75 }}
-              className="mt-3 p-4 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100 transform-gpu"
+              className="mt-3 p-4 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100"
             >
               <p className="text-blue-600 font-semibold text-sm mb-1">Head Office</p>
               <p className="text-slate-600 text-sm leading-relaxed">
