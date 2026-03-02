@@ -10,42 +10,36 @@ const productCategories = [
     icon: Cpu,
     title: "Software Products",
     color: "from-blue-600 to-blue-400",
-    bg: "bg-blue-50",
     items: ["Microsoft (all editions)", "IBM Software Suite", "Red Hat Linux", "VMware Virtualization"],
   },
   {
     icon: Server,
     title: "Security Hardware & Software",
     color: "from-red-500 to-rose-400",
-    bg: "bg-red-50",
     items: ["Fortinet Firewalls", "Checkpoint Solutions", "Force-Point Security", "Sophos Endpoint"],
   },
   {
     icon: Monitor,
     title: "Display Panels",
     color: "from-cyan-600 to-cyan-400",
-    bg: "bg-cyan-50",
     items: ["Samsung Display Panels", "LG Screens", "Aaztech / People Link", "Barco & Delta"],
   },
   {
     icon: Camera,
     title: "Video Conferencing",
     color: "from-indigo-600 to-indigo-400",
-    bg: "bg-indigo-50",
     items: ["People Link Systems", "Cisco Telepresence", "Polycom Solutions", "HD Video Endpoints"],
   },
   {
     icon: Printer,
     title: "Printers & Consumables",
     color: "from-emerald-600 to-green-400",
-    bg: "bg-emerald-50",
     items: ["HP Inkjet & Laser", "Canon Printers", "Epson Ink Tank", "Xerox & Samsung"],
   },
   {
     icon: Database,
     title: "IT Peripherals",
     color: "from-amber-500 to-yellow-400",
-    bg: "bg-amber-50",
     items: ["SSD & Storage Drives", "Keyboards & Mice", "Scanners & Monitors", "Speakers & Headsets"],
   },
 ];
@@ -130,7 +124,7 @@ export default function Products() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {productCategories.map(({ icon: Icon, title, color, bg, items }, i) => (
+          {productCategories.map(({ icon: Icon, title, color, items }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 30 }}
