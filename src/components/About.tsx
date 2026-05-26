@@ -67,7 +67,7 @@ export default function About() {
 
         {/* items-start ensures both columns start at the highest point */}
         <div className="grid lg:grid-cols-2 gap-14 items-start mb-16">
-          
+
           {/* Left Column: Text (No margins, sitting naturally) */}
           <div className="flex flex-col">
             <motion.p
@@ -166,7 +166,7 @@ export default function About() {
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.15 * i + 0.4 }}
                   whileHover={{ x: 6 }}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all duration-300 group"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-white/50 backdrop-blur-md border border-white/40 hover:border-blue-200/50 hover:bg-white/60 transition-all duration-300 group glass-shimmer-hover"
                 >
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-100">
                     <Icon className="w-4 h-4 text-white" />
@@ -183,7 +183,7 @@ export default function About() {
               initial={{ opacity: 0, x: 40 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.75 }}
-              className="mt-3 p-4 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100"
+              className="mt-3 p-4 rounded-xl bg-gradient-to-br from-blue-50/70 to-cyan-50/70 backdrop-blur-md border border-blue-100/50"
             >
               <p className="text-blue-600 font-semibold text-sm mb-1">Head Office</p>
               <p className="text-slate-600 text-sm leading-relaxed">

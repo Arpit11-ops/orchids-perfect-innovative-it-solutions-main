@@ -65,7 +65,7 @@ export default function Stats() {
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ y: -4, scale: 1.03 }}
-              className="relative p-5 rounded-2xl bg-white/20 border border-white/25 hover:bg-white/30 transition-all duration-300 text-center group overflow-hidden"
+              className="relative p-5 rounded-2xl liquid-glass-dark glass-shimmer-hover glass-refraction hover:bg-white/[0.18] transition-all duration-300 text-center group overflow-hidden"
             >
               <div className="absolute inset-x-0 top-0 h-0.5 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center mx-auto mb-3">

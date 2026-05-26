@@ -9,6 +9,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Products", href: "#products" },
+  { label: "Robotics", href: "#ugv" },
   { label: "Clients", href: "#clients" },
   { label: "Get In Touch", href: "#contact" },
 ];
@@ -35,11 +36,10 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 shadow-lg shadow-slate-200/60 border-b border-slate-200"
-            : "bg-white/90 border-b border-slate-100"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? "bg-white/65 backdrop-blur-2xl backdrop-saturate-[1.8] shadow-lg shadow-slate-200/30 border-b border-white/40"
+          : "bg-white/50 backdrop-blur-xl backdrop-saturate-150 border-b border-white/30"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -64,24 +64,24 @@ export default function Navbar() {
               {navLinks.map((link, i) => {
                 const isCta = link.href === "#contact";
                 return (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * i + 0.3 }}
-                  className={
-                    isCta
-                      ? "ml-2 flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
-                      : "relative px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors duration-200 group"
-                  }
-                >
-                  {link.label}
-                  {isCta ? null : (
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-3/4 transition-all duration-300 rounded-full" />
-                  )}
-                </motion.a>
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * i + 0.3 }}
+                    className={
+                      isCta
+                        ? "ml-2 flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
+                        : "relative px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors duration-200 group"
+                    }
+                  >
+                    {link.label}
+                    {isCta ? null : (
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-3/4 transition-all duration-300 rounded-full" />
+                    )}
+                  </motion.a>
                 );
               })}
             </div>
@@ -105,27 +105,27 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-slate-200 md:hidden overflow-hidden shadow-lg"
+            className="fixed top-16 left-0 right-0 z-40 bg-white/70 backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/40 md:hidden overflow-hidden shadow-lg shadow-slate-200/20"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
               {navLinks.map((link, i) => {
                 const isCta = link.href === "#contact";
                 return (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className={
-                    isCta
-                      ? "mt-2 flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-xl shadow-md shadow-blue-200"
-                      : "py-3 px-2 text-slate-600 hover:text-blue-600 border-b border-slate-100 text-sm font-medium transition-colors"
-                  }
-                >
-                  {link.label}
-                </motion.a>
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={
+                      isCta
+                        ? "mt-2 flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-xl shadow-md shadow-blue-200"
+                        : "py-3 px-2 text-slate-600 hover:text-blue-600 border-b border-slate-100 text-sm font-medium transition-colors"
+                    }
+                  >
+                    {link.label}
+                  </motion.a>
                 );
               })}
             </div>

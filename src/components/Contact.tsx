@@ -64,7 +64,7 @@ export default function Contact() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-start gap-5 p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-blue-50/40 transition-all duration-300 group transform-gpu"
+                className="flex items-start gap-5 p-5 rounded-2xl bg-white/50 backdrop-blur-md border border-white/40 hover:border-blue-200/50 hover:bg-white/60 transition-all duration-300 group transform-gpu glass-shimmer-hover"
               >
                 <div className={`w-12 h-12 rounded-xl ${color} flex items-center justify-center flex-shrink-0 shadow-md`}>
                   <Icon className="w-5 h-5 text-white" />
@@ -93,7 +93,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm transform-gpu"
+            className="p-6 sm:p-8 rounded-2xl bg-white/50 backdrop-blur-xl backdrop-saturate-150 border border-white/40 shadow-lg shadow-slate-200/10 transform-gpu"
           >
             <h3 className="text-slate-800 font-bold text-xl mb-6">Send a Message</h3>
             <form

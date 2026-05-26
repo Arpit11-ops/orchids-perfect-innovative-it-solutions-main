@@ -2,14 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Network, Monitor, ChevronDown, Plane } from "lucide-react";
+import { ArrowRight, Network, Monitor, ChevronDown, Plane } from "lucide-react";
 import Image from "next/image";
 
 const floatingBadges = [
-  { icon: Shield, label: "ISO 9001 Certified", delay: 0.8, x: "left-10 top-1/3", color: "from-blue-600 to-blue-400" },
-  { icon: Monitor, label: "30,000+ Users", delay: 1.0, x: "left-1/2 -translate-x-1/2 top-24", color: "from-indigo-600 to-indigo-400" },
-  { icon: Network, label: "30+ Years Experience", delay: 1.2, x: "right-10 top-1/3", color: "from-cyan-600 to-cyan-400" },
-  { icon: Plane, label: "Advanced Drone Solutions", delay: 1.4, x: "left-1/4 bottom-1/3", color: "from-amber-600 to-amber-400" },
+  { icon: Network, label: "30+ Years Experience", color: "from-cyan-600 to-cyan-400" },
+  { icon: Plane, label: "Advanced Drone Solutions", color: "from-amber-600 to-amber-400" },
+  { icon: Monitor, label: "30,000+ Users", color: "from-indigo-600 to-indigo-400" },
 ];
 
 const partners = ["DELL", "Cisco", "IBM", "Microsoft", "Fortinet", "HPE", "VMware", "Sophos"];
@@ -129,27 +128,36 @@ export default function Hero() {
         }}
       />
 
-      {floatingBadges.map(({ icon: Icon, label, delay, x, color }) => (
-        <motion.div
-          key={label}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay, duration: 0.5 }}
-          className={`absolute ${x} hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-white/85 border border-blue-100 shadow-lg shadow-blue-100/50 z-10`}
-        >
-          <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${color} flex items-center justify-center flex-shrink-0`}>
-            <Icon className="w-3.5 h-3.5 text-white" />
-          </div>
-          <span className="text-xs text-slate-600 font-medium whitespace-nowrap">{label}</span>
+      {/* Badge left */}
+      <div className="absolute top-1/3 left-10 hidden lg:block z-10">
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl">
+          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-cyan-600 to-cyan-400 flex items-center justify-center flex-shrink-0"><Network className="w-3.5 h-3.5 text-white" /></div>
+          <span className="text-xs text-slate-600 font-medium whitespace-nowrap">30+ Years Experience</span>
         </motion.div>
-      ))}
+      </div>
+
+      {/* Badge right upper */}
+      <div className="absolute top-1/3 right-10 hidden lg:block z-10">
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.0, duration: 0.5 }} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl">
+          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-amber-600 to-amber-400 flex items-center justify-center flex-shrink-0"><Plane className="w-3.5 h-3.5 text-white" /></div>
+          <span className="text-xs text-slate-600 font-medium whitespace-nowrap">Advanced Drone Solutions</span>
+        </motion.div>
+      </div>
+
+      {/* Badge right lower */}
+      <div className="absolute bottom-1/3 right-10 hidden lg:block z-10">
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2, duration: 0.5 }} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl">
+          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-600 to-indigo-400 flex items-center justify-center flex-shrink-0"><Monitor className="w-3.5 h-3.5 text-white" /></div>
+          <span className="text-xs text-slate-600 font-medium whitespace-nowrap">30,000+ Users</span>
+        </motion.div>
+      </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-xs font-semibold tracking-widest uppercase mb-6"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-200/50 bg-blue-50/60 backdrop-blur-md text-blue-600 text-xs font-semibold tracking-widest uppercase mb-6"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
           ISO 9001-2008 Certified &bull; Est. 1995
@@ -187,7 +195,7 @@ export default function Hero() {
           {floatingBadges.map(({ icon: Icon, label, color }) => (
             <div
               key={`mobile-${label}`}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-blue-100 shadow-sm"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/25 backdrop-blur-lg border border-white/30 shadow-sm"
             >
               <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${color} flex items-center justify-center`}>
                 <Icon className="w-3 h-3 text-white" />
@@ -215,7 +223,7 @@ export default function Hero() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="flex items-center gap-2 px-7 py-3.5 border border-blue-200 bg-white text-blue-600 font-semibold rounded-xl hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 text-sm shadow-sm"
+            className="flex items-center gap-2 px-7 py-3.5 border border-white/40 bg-white/30 backdrop-blur-xl text-blue-600 font-semibold rounded-xl hover:bg-white/50 hover:border-white/50 transition-all duration-200 text-sm shadow-lg shadow-blue-100/20"
           >
             Contact Us
           </motion.button>
@@ -271,7 +279,7 @@ export default function Hero() {
         transition={{ delay: 1.4, duration: 0.8 }}
         className="absolute bottom-16 left-12 hidden xl:block z-10"
       >
-        <div className="relative w-56 h-36 rounded-2xl overflow-hidden border-2 border-white shadow-xl shadow-slate-200 group">
+        <div className="relative w-56 h-36 rounded-2xl overflow-hidden border border-white/40 shadow-xl shadow-blue-200/20 group glass-shimmer-hover" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}>
           <Image
             src="https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?w=400&q=80"
             alt="Network infrastructure"
@@ -293,7 +301,7 @@ export default function Hero() {
         transition={{ delay: 1.6, duration: 0.8 }}
         className="absolute bottom-16 right-12 hidden xl:block z-10"
       >
-        <div className="relative w-56 h-36 rounded-2xl overflow-hidden border-2 border-white shadow-xl shadow-slate-200 group">
+        <div className="relative w-56 h-36 rounded-2xl overflow-hidden border border-white/40 shadow-xl shadow-blue-200/20 group glass-shimmer-hover" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)' }}>
           <Image
             src="https://images.unsplash.com/photo-1524143986875-3b098d78b363?w=400&q=80"
             alt="Drone solutions"

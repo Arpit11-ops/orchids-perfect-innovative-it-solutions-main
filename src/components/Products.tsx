@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Cpu, Printer, Server, Camera, Database, Monitor, Plane } from "lucide-react";
+import { Cpu, Printer, Server, Camera, Database, Monitor, Plane, Bot, PersonStanding } from "lucide-react";
 import Image from "next/image";
 
 const productCategories = [
@@ -46,7 +46,19 @@ const productCategories = [
     icon: Plane,
     title: "Drones & Components",
     color: "from-amber-600 to-amber-400",
-    items: ["Commercial Drones", "Replacement Propellers", "Camera Gimbal Systems", "High-Capacity Batteries"],
+    items: ["In-House Manufactured Drones", "Drone Sales & Supply", "Camera Gimbal Systems", "High-Capacity Batteries"],
+  },
+  {
+    icon: Bot,
+    title: "AI Solutions",
+    color: "from-fuchsia-600 to-pink-400",
+    items: ["AI Agent Frameworks", "NLP & Chatbot Platforms", "ML Model Deployment", "Enterprise AI Integration"],
+  },
+  {
+    icon: PersonStanding,
+    title: "Humanoid & Robotics",
+    color: "from-teal-600 to-emerald-400",
+    items: ["Humanoid Research Kits", "Motion Control Systems", "Sensor & Actuator Modules", "Autonomous Navigation"],
   },
 ];
 
@@ -121,7 +133,7 @@ export default function Products() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-0 right-0 flex justify-center">
-                <span className="px-4 py-1.5 rounded-full bg-blue-600/90 text-white text-xs font-semibold shadow-sm">
+                <span className="px-4 py-1.5 rounded-full bg-blue-600/70 backdrop-blur-lg border border-white/20 text-white text-xs font-semibold shadow-md">
                   {img.label}
                 </span>
               </div>
@@ -137,7 +149,7 @@ export default function Products() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.09 }}
               whileHover={{ y: -4 }}
-              className={`p-6 rounded-2xl bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300 flex flex-col h-full group ${i === 6 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2 w-full sm:max-w-sm lg:max-w-none mx-auto" : ""
+              className={`p-6 rounded-2xl bg-white border border-slate-100 hover:border-white/50 hover:shadow-md transition-all duration-300 flex flex-col h-full group glass-shimmer-hover ${i === 8 ? "sm:col-span-2 lg:col-span-1 w-full sm:max-w-sm lg:max-w-none mx-auto" : ""
                 }`}
             >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-5 shadow-md mx-auto`}>

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Shield, Wifi, Monitor, Package, Layers, HardDrive, Plane } from "lucide-react";
+import { Shield, Wifi, Monitor, Package, Layers, HardDrive, Plane, Bot, PersonStanding } from "lucide-react";
 import Image from "next/image";
 
 const services = [
@@ -85,10 +85,34 @@ const services = [
     border: "hover:border-amber-200",
     bg: "hover:bg-amber-50/50",
     accent: "bg-gradient-to-r from-amber-600 to-amber-400",
-    desc: "Comprehensive drone solutions for aerial surveying, inspections, and monitoring tailored to your enterprise needs.",
-    tags: ["Surveying", "Inspections", "Aerial Photography", "Mapping"],
+    desc: "We manufacture and sell our own line of drones alongside offering comprehensive drone services — aerial surveying, inspections, photography, and mapping tailored to enterprise and defence needs.",
+    tags: ["Manufacturing", "Surveying", "Inspections", "Aerial Photography", "Mapping"],
     image: "https://images.unsplash.com/photo-1524143986875-3b098d78b363?w=600&q=80",
     imageAlt: "Professional drone in flight",
+  },
+  {
+    icon: Bot,
+    title: "AI Applications",
+    color: "from-fuchsia-600 to-pink-400",
+    border: "hover:border-fuchsia-200",
+    bg: "hover:bg-fuchsia-50/50",
+    accent: "bg-gradient-to-r from-fuchsia-600 to-pink-400",
+    desc: "End-to-end AI application development and deployment — intelligent agents, workflow automation, and conversational AI systems tailored for enterprise and government operations.",
+    tags: ["AI Agents", "Workflow Automation", "Conversational AI", "LLM Integration"],
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80",
+    imageAlt: "Abstract AI neural network visualization",
+  },
+  {
+    icon: PersonStanding,
+    title: "Humanoid Research",
+    color: "from-teal-600 to-emerald-400",
+    border: "hover:border-teal-200",
+    bg: "hover:bg-teal-50/50",
+    accent: "bg-gradient-to-r from-teal-600 to-emerald-400",
+    desc: "Research and integration services in humanoid robotics — exploring human-robot interaction, motion intelligence, and autonomous systems for defence, industrial, and enterprise applications.",
+    tags: ["Humanoid Robotics", "Human-Robot Interaction", "Autonomous Systems", "R&D"],
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80",
+    imageAlt: "Humanoid robotics research concept",
   },
 ];
 
@@ -133,7 +157,7 @@ export default function Services() {
               transition={{ duration: 0.55, delay: i * 0.08 }}
               onHoverStart={() => setHovered(i)}
               onHoverEnd={() => setHovered(null)}
-              className={`relative rounded-2xl bg-white border border-slate-100 ${border} ${bg} transition-all duration-300 overflow-hidden group cursor-default shadow-sm hover:shadow-md ${i === 6 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2 w-full sm:max-w-sm lg:max-w-none mx-auto" : ""
+              className={`relative rounded-2xl bg-white border border-slate-100 ${border} ${bg} transition-all duration-300 overflow-hidden group cursor-default shadow-sm hover:shadow-md ${i === 8 ? "sm:col-span-2 lg:col-span-1 w-full sm:max-w-sm lg:max-w-none mx-auto" : ""
                 }`}
             >
               <div className="relative h-44 overflow-hidden">
@@ -158,7 +182,7 @@ export default function Services() {
                   {tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-500 text-xs font-medium"
+                      className="px-2.5 py-1 rounded-full liquid-glass-subtle text-slate-500 text-xs font-medium"
                     >
                       {tag}
                     </span>

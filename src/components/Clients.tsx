@@ -140,7 +140,7 @@ export default function Clients() {
             initial={{ opacity: 0 }}
             animate={brandsInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden border border-slate-200 p-8 bg-white shadow-sm"
+            className="relative rounded-2xl overflow-hidden border border-white/40 p-8 bg-white/50 backdrop-blur-xl shadow-sm"
           >
             <div className="relative z-10 flex flex-wrap justify-center gap-3">
               {brands.map((brand, i) => (
@@ -150,7 +150,7 @@ export default function Clients() {
                   animate={brandsInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: i * 0.04 }}
                   whileHover={{ scale: 1.08, y: -2 }}
-                  className="px-5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-blue-50 text-slate-600 hover:text-blue-600 text-sm font-bold tracking-wide transition-all duration-200 cursor-default"
+                  className="px-5 py-2.5 rounded-xl bg-white/60 backdrop-blur-sm border border-white/50 hover:border-blue-300/50 hover:bg-blue-50/50 text-slate-600 hover:text-blue-600 text-sm font-bold tracking-wide transition-all duration-200 cursor-default glass-shimmer-hover"
                 >
                   {brand}
                 </motion.div>
