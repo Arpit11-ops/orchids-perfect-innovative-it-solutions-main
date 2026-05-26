@@ -2,16 +2,31 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Network, Monitor, ChevronDown } from "lucide-react";
+import { ArrowRight, Shield, Network, Monitor, ChevronDown, Plane } from "lucide-react";
 import Image from "next/image";
 
 const floatingBadges = [
   { icon: Shield, label: "ISO 9001 Certified", delay: 0.8, x: "left-10 top-1/3", color: "from-blue-600 to-blue-400" },
   { icon: Monitor, label: "30,000+ Users", delay: 1.0, x: "left-1/2 -translate-x-1/2 top-24", color: "from-indigo-600 to-indigo-400" },
   { icon: Network, label: "30+ Years Experience", delay: 1.2, x: "right-10 top-1/3", color: "from-cyan-600 to-cyan-400" },
+  { icon: Plane, label: "Advanced Drone Solutions", delay: 1.4, x: "left-1/4 bottom-1/3", color: "from-amber-600 to-amber-400" },
 ];
 
 const partners = ["DELL", "Cisco", "IBM", "Microsoft", "Fortinet", "HPE", "VMware", "Sophos"];
+const mobileHighlights = [
+  {
+    title: "Networking",
+    subtitle: "Infrastructure solutions",
+    image: "https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?w=400&q=80",
+    alt: "Network infrastructure",
+  },
+  {
+    title: "Drone Solutions",
+    subtitle: "Aerial intelligence",
+    image: "https://images.unsplash.com/photo-1524143986875-3b098d78b363?w=400&q=80",
+    alt: "Drone solutions",
+  },
+];
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -164,6 +179,25 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="lg:hidden flex flex-wrap items-center justify-center gap-2 mb-8"
+        >
+          {floatingBadges.map(({ icon: Icon, label, color }) => (
+            <div
+              key={`mobile-${label}`}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-blue-100 shadow-sm"
+            >
+              <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${color} flex items-center justify-center`}>
+                <Icon className="w-3 h-3 text-white" />
+              </div>
+              <span className="text-[11px] text-slate-600 font-medium whitespace-nowrap">{label}</span>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
@@ -208,6 +242,27 @@ export default function Hero() {
             ))}
           </div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="xl:hidden mt-10 grid grid-cols-2 gap-3"
+        >
+          {mobileHighlights.map((item) => (
+            <div
+              key={item.title}
+              className="relative h-24 rounded-xl overflow-hidden border border-white shadow-lg shadow-slate-200"
+            >
+              <Image src={item.image} alt={item.alt} fill className="object-cover" unoptimized />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/15 to-transparent" />
+              <div className="absolute bottom-2 left-0 right-0 text-center">
+                <p className="text-white text-xs font-bold">{item.title}</p>
+                <p className="text-slate-300 text-[9px] uppercase tracking-wider">{item.subtitle}</p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       <motion.div
@@ -240,16 +295,16 @@ export default function Hero() {
       >
         <div className="relative w-56 h-36 rounded-2xl overflow-hidden border-2 border-white shadow-xl shadow-slate-200 group">
           <Image
-            src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=400&q=80"
-            alt="Cyber security"
+            src="https://images.unsplash.com/photo-1524143986875-3b098d78b363?w=400&q=80"
+            alt="Drone solutions"
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-700"
             unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center text-center">
-            <p className="text-white text-sm font-bold">Cyber Security</p>
-            <p className="text-slate-300 text-[10px] mt-0.5 uppercase tracking-wider">Enterprise protection</p>
+            <p className="text-white text-sm font-bold">Drone Solutions</p>
+            <p className="text-slate-300 text-[10px] mt-0.5 uppercase tracking-wider">Aerial intelligence</p>
           </div>
         </div>
       </motion.div>

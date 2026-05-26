@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
 
 const contactDetails = [
   {
@@ -25,13 +25,6 @@ const contactDetails = [
     value: "AJ-20A, Shalimar Bagh, Delhi-110088",
     href: "https://maps.google.com/?q=Shalimar+Bagh+Delhi",
     color: "bg-indigo-600",
-  },
-  {
-    icon: Clock,
-    label: "Same Day Service",
-    value: "Preventative maintenance clients get same-day response",
-    href: null,
-    color: "bg-violet-600",
   },
 ];
 
@@ -94,16 +87,6 @@ export default function Contact() {
               </motion.div>
             ))}
 
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="p-5 rounded-2xl bg-blue-50 border border-blue-100 transform-gpu"
-            >
-              <p className="text-blue-700 font-bold text-base mb-1">Ajay Kumar</p>
-              <p className="text-slate-600 text-sm">Director Sales</p>
-              <p className="text-slate-500 text-xs mt-2">Perfect Innovative Computers Pvt. Ltd</p>
-            </motion.div>
           </div>
 
           <motion.div

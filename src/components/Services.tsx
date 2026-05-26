@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Shield, Wifi, Monitor, Package, Layers, HardDrive } from "lucide-react";
+import { Shield, Wifi, Monitor, Package, Layers, HardDrive, Plane } from "lucide-react";
 import Image from "next/image";
 
 const services = [
@@ -78,6 +78,18 @@ const services = [
     image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&q=80",
     imageAlt: "IT peripherals",
   },
+  {
+    icon: Plane,
+    title: "Drone Services",
+    color: "from-amber-600 to-amber-400",
+    border: "hover:border-amber-200",
+    bg: "hover:bg-amber-50/50",
+    accent: "bg-gradient-to-r from-amber-600 to-amber-400",
+    desc: "Comprehensive drone solutions for aerial surveying, inspections, and monitoring tailored to your enterprise needs.",
+    tags: ["Surveying", "Inspections", "Aerial Photography", "Mapping"],
+    image: "https://images.unsplash.com/photo-1524143986875-3b098d78b363?w=600&q=80",
+    imageAlt: "Professional drone in flight",
+  },
 ];
 
 export default function Services() {
@@ -121,7 +133,8 @@ export default function Services() {
               transition={{ duration: 0.55, delay: i * 0.08 }}
               onHoverStart={() => setHovered(i)}
               onHoverEnd={() => setHovered(null)}
-              className={`relative rounded-2xl bg-white border border-slate-100 ${border} ${bg} transition-all duration-300 overflow-hidden group cursor-default shadow-sm hover:shadow-md`}
+              className={`relative rounded-2xl bg-white border border-slate-100 ${border} ${bg} transition-all duration-300 overflow-hidden group cursor-default shadow-sm hover:shadow-md ${i === 6 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2 w-full sm:max-w-sm lg:max-w-none mx-auto" : ""
+                }`}
             >
               <div className="relative h-44 overflow-hidden">
                 <Image

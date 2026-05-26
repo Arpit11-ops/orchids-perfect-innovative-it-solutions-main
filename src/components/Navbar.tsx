@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Products", href: "#products" },
   { label: "Clients", href: "#clients" },
-  { label: "Contact", href: "#contact" },
+  { label: "Get In Touch", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -61,7 +61,9 @@ export default function Navbar() {
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link, i) => (
+              {navLinks.map((link, i) => {
+                const isCta = link.href === "#contact";
+                return (
                 <motion.a
                   key={link.label}
                   href={link.href}
@@ -69,24 +71,19 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * i + 0.3 }}
-                  className="relative px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors duration-200 group"
+                  className={
+                    isCta
+                      ? "ml-2 flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
+                      : "relative px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors duration-200 group"
+                  }
                 >
                   {link.label}
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-3/4 transition-all duration-300 rounded-full" />
+                  {isCta ? null : (
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-3/4 transition-all duration-300 rounded-full" />
+                  )}
                 </motion.a>
-              ))}
-              <motion.a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="ml-4 px-5 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-lg shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
-              >
-                Get in Touch
-              </motion.a>
+                );
+              })}
             </div>
 
             {/* Mobile Menu Button */}
@@ -111,7 +108,9 @@ export default function Navbar() {
             className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-slate-200 md:hidden overflow-hidden shadow-lg"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
-              {navLinks.map((link, i) => (
+              {navLinks.map((link, i) => {
+                const isCta = link.href === "#contact";
+                return (
                 <motion.a
                   key={link.label}
                   href={link.href}
@@ -119,21 +118,16 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="py-3 px-2 text-slate-600 hover:text-blue-600 border-b border-slate-100 text-sm font-medium transition-colors"
+                  className={
+                    isCta
+                      ? "mt-2 flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-xl shadow-md shadow-blue-200"
+                      : "py-3 px-2 text-slate-600 hover:text-blue-600 border-b border-slate-100 text-sm font-medium transition-colors"
+                  }
                 >
                   {link.label}
                 </motion.a>
-              ))}
-              <motion.a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.35 }}
-                className="mt-3 py-3 text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold rounded-lg"
-              >
-                Get in Touch
-              </motion.a>
+                );
+              })}
             </div>
           </motion.div>
         )}

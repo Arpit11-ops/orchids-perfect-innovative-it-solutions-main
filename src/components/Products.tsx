@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Cpu, Printer, Server, Camera, Database, Monitor } from "lucide-react";
+import { Cpu, Printer, Server, Camera, Database, Monitor, Plane } from "lucide-react";
 import Image from "next/image";
 
 const productCategories = [
@@ -42,6 +42,12 @@ const productCategories = [
     color: "from-amber-500 to-yellow-400",
     items: ["SSD & Storage Drives", "Keyboards & Mice", "Scanners & Monitors", "Speakers & Headsets"],
   },
+  {
+    icon: Plane,
+    title: "Drones & Components",
+    color: "from-amber-600 to-amber-400",
+    items: ["Commercial Drones", "Replacement Propellers", "Camera Gimbal Systems", "High-Capacity Batteries"],
+  },
 ];
 
 const showcaseImages = [
@@ -72,7 +78,7 @@ export default function Products() {
     <section id="products" ref={ref} className="relative py-24 bg-white overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px z-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px z-0 bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-      
+
       <div className="absolute top-10 left-10 w-80 h-80 z-0 bg-blue-50 rounded-full opacity-50 pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-80 h-80 z-0 bg-cyan-50 rounded-full opacity-50 pointer-events-none" />
 
@@ -131,7 +137,8 @@ export default function Products() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.09 }}
               whileHover={{ y: -4 }}
-              className="p-6 rounded-2xl bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300 flex flex-col h-full group"
+              className={`p-6 rounded-2xl bg-white border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300 flex flex-col h-full group ${i === 6 ? "sm:col-span-2 lg:col-span-1 lg:col-start-2 w-full sm:max-w-sm lg:max-w-none mx-auto" : ""
+                }`}
             >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-5 shadow-md mx-auto`}>
                 <Icon className="w-5 h-5 text-white" />
